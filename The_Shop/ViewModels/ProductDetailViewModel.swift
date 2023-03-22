@@ -38,13 +38,17 @@ class ProductDetailViewModel: ObservableObject {
         selectedProduct = ProductViewModel(product: product)
     }
     
+    //N02abp1xnxSjx7Jywby7-812-7?appearanceId=1&ideaId=62a46a3628f4aa0fbe2b00de&apikey=?SprdAuth%20apiKey=%22b1271341-2d14-468b-a6ed-d28ba13034c0%22
+    
     // Ruft die Produktdaten ab.
-    func fetchProduct() {
-        guard let url = URL(string: Constants.PRODUCT_DETAIL_URL) else {
+    
+    //TO DO: sellableId, productAppearanceIds, productIdeaId
+    func fetchProduct(sellableId: String, productAppearanceIds: String, productIdeaId: String ) {
+        guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId))&apikey=\(Constants.API_KEY)") else {
             self.error = IdentifiableError(message: "Ungültige URL.")
             return
         }
-        
+        print(url)
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -56,6 +60,7 @@ class ProductDetailViewModel: ObservableObject {
             guard let data = data else {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "Keine Daten empfangen.")
+                    //print(response)
                 }
                 return
             }
@@ -69,7 +74,7 @@ class ProductDetailViewModel: ObservableObject {
             } catch {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "\(error)")
-                    
+                    //print(data, error)
                 }
                 return
             }
@@ -83,12 +88,12 @@ class ProductDetailViewModel: ObservableObject {
 
 // Das ViewModel für ein einzelnes Produkt.
 struct ProductViewModel {
-    
+  
     // Das zugrunde liegende Product-Objekt.
     let product: Product
     
     // Der formatierte Preis des Produkts.
-    var formattedPrice: String {
+    var productFormattedPrice: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = product.price.currencyId
@@ -122,7 +127,7 @@ struct ProductViewModel {
     }
     
     // Der Typ des Produkts.
-    var productType: String {
+    var productTypeID: String {
         product.productTypeId
     }
     
@@ -135,6 +140,27 @@ struct ProductViewModel {
     var productImages: [ProductImageViewModel] {
         product.images.map { ProductImageViewModel(productImage: $0) }
     }
+    
+    // Diese Variable gibt die ideaId des Produkts zurück
+    var productIdeaId: String {
+        product.ideaId
+    }
+
+    // Diese Variable gibt die mainDesignId des Produkts zurück
+    var productMainDesignID: String {
+        product.mainDesignId
+    }
+
+    // Diese Variable gibt ein Array mit den tags des Produkts zurück
+    var tags: [String] {
+        product.tags
+    }
+
+    // Diese Variable gibt die sellableId des Produkts zurück
+    var productSellableId: String {
+        product.sellableId
+    }
+    
 }
 
 // Das ViewModel für ein einzelnes Produktbild.

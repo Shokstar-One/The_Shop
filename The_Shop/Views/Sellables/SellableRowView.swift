@@ -21,7 +21,7 @@ struct SellableRowView: View {
            
             Text(sellableVM.name)
                 .font(.title3)
-            
+   
             Image(systemName: "photo")
                 .asyncData(imageUrl: sellableVM.previewImageURL)
                 .aspectRatio(contentMode: .fit)
@@ -38,9 +38,13 @@ struct SellableRowView: View {
                                 .foregroundColor(Color.white)
                                 .font(.title2)
                         }
+        } // VStack
+        .onAppear{
+            print("SellableRow: \(sellableVM.sellableId)")
         }
     }
     
+  
 }
 
 

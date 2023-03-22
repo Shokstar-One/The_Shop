@@ -18,22 +18,22 @@ class SellablesListViewModel: ObservableObject {
     
     
     func fetchSellables() {
-        guard let url = URL(string: Constants.BASE_URL) else {
-            self.error = IdentifiableError(message: "\(String(describing: error))")
+        guard let url = URL(string: Constants.API_URL) else {
+            self.error = IdentifiableError(message: "Invalid URL: \(Constants.API_URL)")
             return
         }
         
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.error = IdentifiableError(message: "\(error)")
+                    self.error = IdentifiableError(message: "An error occurred: \(error.localizedDescription)")
                 }
                 return
             }
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    self.error = IdentifiableError( message: "\(String(describing: error))")
+                    self.error = IdentifiableError(message: "No data received from server.")
                 }
                 return
             }
@@ -43,11 +43,10 @@ class SellablesListViewModel: ObservableObject {
                 let sellableViewModels = sellablesResponse.sellables.map { SellableViewModel(sellableResponse: sellablesResponse, sellable: $0) }
                 DispatchQueue.main.async {
                     self.theSellablesListFromVM = sellableViewModels
-            
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self.error = IdentifiableError(message: "\(error)")
+                    self.error = IdentifiableError(message: "Error decoding sellables response: \(error.localizedDescription)")
                 }
                 return
             }
@@ -55,6 +54,7 @@ class SellablesListViewModel: ObservableObject {
         
         task.resume()
     }
+
     
 }
 

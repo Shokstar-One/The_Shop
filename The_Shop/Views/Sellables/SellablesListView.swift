@@ -41,19 +41,19 @@ struct SellablesListView: View {
                             isAnimated = true
                         }
                     // Liste aller verkaufbaren Produkte --- SellableDetailView(sellableVM: sellableVM))
-                    List(sellableVM.theSellablesListFromVM, id: \.ideaId) { sellableVM in
-                        NavigationLink(destination: ProductDetailView().environmentObject(productVM)) {
+                    List(sellableVM.theSellablesListFromVM, id: \.id) { sellableVM in
+                        NavigationLink(destination: ProductDetailView(productVM: _productVM, sellableVM: SellablesListViewModel()).environmentObject(productVM)) {
                             SellableRowView(sellableVM: sellableVM)
                                 .onTapGesture {
                                     productVM.selectedSellable = sellableVM.sellable
                                        }
-                        }
+                        } // NavigationLink
                         
-                    }
+                    } // List
                     .listStyle(.plain)
                     .navigationBarTitleDisplayMode(.inline)
                 
-                } //VStack HEADER
+                } //VStack HEADER // VStack
                 
                 
                 // Ein rechteckiges Overlay mit einer Animation und einem Button
@@ -130,8 +130,8 @@ struct SellablesListView: View {
                     .offset(y: 350)
                
                 
-            }
-        }
+            } // ZStack
+        } // NavigationView
         // Beim Erscheinen der Ansicht sollen die verkaufbaren Produkte aus dem Netzwerk abgerufen werden
         .onAppear {
             sellableVM.fetchSellables()
