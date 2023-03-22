@@ -41,7 +41,7 @@ struct SellablesListView: View {
                             isAnimated = true
                         }
                     // Liste aller verkaufbaren Produkte --- SellableDetailView(sellableVM: sellableVM))
-                    List(sellableVM.theSellablesListFromVM, id: \.ideaId) { sellableVM in
+                    List(sellableVM.theSellablesListFromVM, id: \.id) { sellableVM in
                         NavigationLink(destination: ProductDetailView().environmentObject(productVM)) {
                             SellableRowView(sellableVM: sellableVM)
                                 .onTapGesture {
