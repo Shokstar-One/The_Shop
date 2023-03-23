@@ -9,25 +9,25 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @EnvironmentObject var productVM: ProductDetailViewModel
-let sellableVM: SellablesListViewModel
+    let sellableVM: SellablesListViewModel
     @State var productImageVM = ProductImageViewModel(productImage: ProductImage.init(url: String(), type: String()))
-
+    
     
     var body: some View {
         VStack {
             if let product = productVM.selectedProduct {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-//                        RemoteImage(url: product.images.first?.url ?? "")
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(maxWidth: .infinity)
-//                            .padding(.vertical, 20)
-//
-//                        Image(systemName: "photo")
-//                            .asyncData(imageUrl: productImageVM.imageURL)
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 250, height: 250)
-//                            .cornerRadius(25)
+                        //                        RemoteImage(url: product.images.first?.url ?? "")
+                        //                            .aspectRatio(contentMode: .fit)
+                        //                            .frame(maxWidth: .infinity)
+                        //                            .padding(.vertical, 20)
+                        //
+                        //                        Image(systemName: "photo")
+                        //                            .asyncData(imageUrl: productImageVM.imageURL)
+                        //                            .aspectRatio(contentMode: .fit)
+                        //                            .frame(width: 250, height: 250)
+                        //                            .cornerRadius(25)
                         
                         Text(product.productName)
                             .font(.title)
@@ -38,25 +38,25 @@ let sellableVM: SellablesListViewModel
                             .font(.body)
                             .padding(.horizontal, 20)
                         
-//                        ForEach(product.productSizeIds, id: \.self) { size in
-//                            HStack {
-//                                Text(size.)
-//                                    .font(.body)
-//
-//                                Spacer()
-//
-//                                Text(productVM.selectedProduct?.productFormattedPrice(for: size))
-//                                    .font(.body)
-//                            }
-//                            .padding(.horizontal, 20)
-//                            .padding(.vertical, 5)
-//                        }
+                        //                        ForEach(product.productSizeIds, id: \.self) { size in
+                        //                            HStack {
+                        //                                Text(size.)
+                        //                                    .font(.body)
+                        //
+                        //                                Spacer()
+                        //
+                        //                                Text(productVM.selectedProduct?.productFormattedPrice(for: size))
+                        //                                    .font(.body)
+                        //                            }
+                        //                            .padding(.horizontal, 20)
+                        //                            .padding(.vertical, 5)
+                        //                        }
                         
                         Spacer()
                     }
                 }
             } else if productVM.error != nil {
-              Text("Nix geht!")
+                Text("Nix geht!")
             } else {
                 ProgressView()
             }
@@ -67,7 +67,7 @@ let sellableVM: SellablesListViewModel
             
             //print( productVM.fetchProduct(sellableId: "\(sellableVM.selectedSellable?.sellableId)", productAppearanceIds: "\(productVM.selectedSellable?.appearanceIds)", productIdeaId: "\(productVM.selectedSellable?.ideaId)"))
             
-            print ("TEST: \(String(describing: sellableVM.selectedSellable?.name))")
+            print ("Comet: \(String(describing: sellableVM.selectedSellable?.name))")
             
         }
     }
