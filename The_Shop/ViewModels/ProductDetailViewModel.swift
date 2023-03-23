@@ -22,7 +22,7 @@ import SwiftUI
 // Das ViewModel für die Produktdetailansicht.
 class ProductDetailViewModel: ObservableObject {
     
-    @Published var productDetailViewModel: ProductDetailViewModel?
+    @Published var productImage: UIImage?
     
     // Das aktuell ausgewählte Produkt.
     @Published var selectedProduct: ProductViewModel?
@@ -30,25 +30,18 @@ class ProductDetailViewModel: ObservableObject {
     // Eine Fehlermeldung, die angezeigt wird, wenn beim Abrufen der Daten ein Fehler aufgetreten ist.
     @Published var error: IdentifiableError?
     
-    // Neue Eigenschaft, um das ausgewählte Sellable-Objekt zu speichern.
-      var selectedSellable: Sellable?
-    
     // Setzt das ausgewählte Produkt auf Basis eines Product-Objekts.
     func setProduct(_ product: Product) {
         selectedProduct = ProductViewModel(product: product)
     }
     
-    //N02abp1xnxSjx7Jywby7-812-7?appearanceId=1&ideaId=62a46a3628f4aa0fbe2b00de&apikey=?SprdAuth%20apiKey=%22b1271341-2d14-468b-a6ed-d28ba13034c0%22
-    
     // Ruft die Produktdaten ab.
-    
-    //TO DO: sellableId, productAppearanceIds, productIdeaId
     func fetchProduct(sellableId: String, productAppearanceIds: String, productIdeaId: String ) {
-        guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId))&apikey=\(Constants.API_KEY)") else {
+        guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId)&apikey=\(Constants.API_KEY)") else {
             self.error = IdentifiableError(message: "Ungültige URL.")
             return
         }
-        print(url)
+
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -56,25 +49,42 @@ class ProductDetailViewModel: ObservableObject {
                 }
                 return
             }
+            print("Aus fetchProduct: \(url)")
             
-            guard let data = data else {
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
                 DispatchQueue.main.async {
-                    self.error = IdentifiableError(message: "Keine Daten empfangen.")
-                    //print(response)
+                    self.error = IdentifiableError(message: "Ungültige Serverantwort.")
                 }
                 return
             }
             
+            guard (200...299).contains(httpResponse.statusCode) else {
+                DispatchQueue.main.async {
+                    self.error = IdentifiableError(message: "Fehlerhafte Serverantwort: \(httpResponse.statusCode)")
+                }
+                return
+            }
+
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    self.error = IdentifiableError(message: "Keine Daten empfangen.")
+                }
+                return
+            }
+            
+            print("DATA BOY: \(data)")
+            
             do {
-                let productResponse = try JSONDecoder().decode(ProductResponse.self, from: data)
-                let productViewModel = ProductViewModel(product: productResponse.product)
+                let productResponse = try JSONDecoder().decode(Product.self, from: data)
+                let productViewModel = ProductViewModel(product: productResponse)
                 DispatchQueue.main.async {
                     self.selectedProduct = productViewModel
                 }
+                print("SelectedProduct: \(String(describing: self.selectedProduct))")
             } catch {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "\(error)")
-                    //print(data, error)
                 }
                 return
             }
@@ -82,20 +92,26 @@ class ProductDetailViewModel: ObservableObject {
         
         task.resume()
     }
-    
-}
+
+    }
+
+
+
 
 
 // Das ViewModel für ein einzelnes Produkt.
-struct ProductViewModel {
-  
+struct ProductViewModel: Identifiable, Decodable{
+   
+    var id = UUID()
+    
     // Das zugrunde liegende Product-Objekt.
-    let product: Product
+    var product: Product
     
     // Der formatierte Preis des Produkts.
     var productFormattedPrice: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "de_DE")
         formatter.currencyCode = product.price.currencyId
         let priceString = formatter.string(from: NSNumber(value: product.price.amount)) ?? "\(product.price.amount)"
         return priceString
@@ -138,7 +154,7 @@ struct ProductViewModel {
     
     // Eine Liste der ViewModel-Objekte für die Produktbilder des Produkts.
     var productImages: [ProductImageViewModel] {
-        product.images.map { ProductImageViewModel(productImage: $0) }
+        product.images.map { ProductImageViewModel( imageURL: $0.url, imageType: $0.type) }
     }
     
     // Diese Variable gibt die ideaId des Produkts zurück
@@ -163,22 +179,53 @@ struct ProductViewModel {
     
 }
 
+
+
 // Das ViewModel für ein einzelnes Produktbild.
-struct ProductImageViewModel: Identifiable {
+class ProductImageViewModel: Identifiable, Hashable, Equatable {
+    static func == (lhs: ProductImageViewModel, rhs: ProductImageViewModel) -> Bool {
+        return lhs.id == rhs.id && lhs.imageURL == rhs.imageURL && lhs.imageType == rhs.imageType
+    }
+    
+    
+    
     var id = UUID()
 
-    // Das zugrunde liegende ProductImage-Objekt.
-    let productImage: ProductImage
-    
     // Die URL des Produktbilds.
-    var imageURL: String {
-        productImage.url
-    }
+    var imageURL: String
     
     // Der Typ des Produktbilds.
-    var imageType: String {
-        productImage.type
+    var imageType: String
+    
+    init(id: UUID = UUID(), imageURL: String, imageType: String) {
+        self.id = id
+        self.imageURL = imageURL
+        self.imageType = imageType
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension ProductViewModel: RandomAccessCollection {
+    
+    typealias Index = Int
+       
+       var startIndex: Index {
+           return productImages.startIndex
+       }
+       
+       var endIndex: Index {
+           return productImages.endIndex
+       }
+       
+    subscript(position: Index) -> ProductImageViewModel {
+        return productImages[position]
+    }
+    
+    
+  
 }
 
 

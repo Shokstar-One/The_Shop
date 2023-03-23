@@ -12,10 +12,11 @@ import UIKit
 
 //zum pushen
 struct SellablesListView: View {
-    // Zugriff auf den SellablesListViewModel, der das Array der verkaufbaren Produkte hält
-    @EnvironmentObject var sellableVM: SellablesListViewModel
-    // Zugriff auf den ProductDetailViewModel, der das selektierte Produkt hält
-    @EnvironmentObject var productVM: ProductDetailViewModel
+    // Instanz von SellablesListViewModel erstellen
+    @StateObject var sellableVM = SellablesListViewModel()
+    
+    // Instanz von ProductDetailViewModel erstellen
+    @StateObject var productVM = ProductDetailViewModel()
     
     // Zustände für die Animation des Buttons
     @State private var isAnimated = false
@@ -27,31 +28,40 @@ struct SellablesListView: View {
     
     var body: some View {
         // Die Hauptansicht, in der alles enthalten ist
-        NavigationView {
+        // MARK: die kann raus
+//        NavigationView {
             
          
             ZStack {
                 VStack {
+               
+                    
                     // HeaderLogoView zeigt das Logo der App
                     HeaderLogoView()
-                        .padding(.horizontal, .pi)
+                        //.padding(.horizontal, .pi)
                         .offset(y: isAnimated ? 0 : -UIScreen.main.bounds.height)
                         .animation(.interpolatingSpring(mass: 0.5, stiffness: 75, damping: 100, initialVelocity: 0))
                         .onAppear {
                             isAnimated = true
                         }
                     // Liste aller verkaufbaren Produkte --- SellableDetailView(sellableVM: sellableVM))
-                    List(sellableVM.theSellablesListFromVM, id: \.id) { sellableVM in
-                        NavigationLink(destination: ProductDetailView(productVM: _productVM, sellableVM: SellablesListViewModel()).environmentObject(productVM)) {
-                            SellableRowView(sellableVM: sellableVM)
-                                .onTapGesture {
-                                    productVM.selectedSellable = sellableVM.sellable
-                                       }
+                    List(sellableVM.theSellablesListFromVM) { sellableVMListItem in
+                        NavigationLink(
+                            // MARK: das angeklickte sellable als parameter übergeben, dadurch ist kein selectedSellable im viewmodel nötig
+                            // MARK: vorher wurde hier selectedSellable in onTabGesture gesetzt, das wird aber im NavigationLink nicht ausgeführt, weil NavigationLink die Tab Geste klaut.
+                            destination: ProductDetailView(selectedSellable: sellableVMListItem.sellable).environmentObject(productVM)
+                        ) {
+                            SellableRowView(sellableVM: sellableVMListItem).environmentObject(sellableVM)
                         } // NavigationLink
                         
                     } // List
                     .listStyle(.plain)
                     .navigationBarTitleDisplayMode(.inline)
+//                    .navigationDestination(for: SellableViewModel.self){ sellableListItem in
+//                        ProductDetailView(selectedSellable: sellableListItem.sellable).environmentObject(productVM)
+//                    }
+                    
+                    
                 
                 } //VStack HEADER // VStack
                 
@@ -60,7 +70,7 @@ struct SellablesListView: View {
                 Rectangle()
                     .fill(
                         LinearGradient(
-                            gradient: Gradient(colors: [.red, .red, .clear]),
+                            gradient: Gradient(colors: [.brightRed, .brightRed, .clear]),
                             startPoint: .topLeading,
                             endPoint: .bottom
                         )
@@ -77,7 +87,10 @@ struct SellablesListView: View {
                     }
                     .overlay {
                         // Button, der beim Klicken die Funktion "fetchSellables" des SellablesListViewModel aufruft
+                        
                         Button(action: {
+                            
+                            //Aufruf der Produktliste (Random)
                             sellableVM.fetchSellables()
                             
                             print("Button wurde geklickt!")
@@ -131,25 +144,27 @@ struct SellablesListView: View {
                
                 
             } // ZStack
-        } // NavigationView
+            
+//        } // NavigationView
         // Beim Erscheinen der Ansicht sollen die verkaufbaren Produkte aus dem Netzwerk abgerufen werden
         .onAppear {
-            sellableVM.fetchSellables()
+          sellableVM.fetchSellables()
         }
         // Alert, der angezeigt wird, wenn ein Fehler auftritt
-        .alert(item: $sellableVM.error) { error in
-            Alert(title: Text("Error"), message: Text((error.localizedDescription)), dismissButton: .default(Text("OK")))
-        }
+//        .alert(item: $sellableVM.error) { error in
+//            Alert(title: Text("Error"), message: Text((error.localizedDescription)), dismissButton: .default(Text("OK")))
+//
+//        }
         
         
     }
     
 }
 
-
+//
 struct SellablesListView_Previews: PreviewProvider {
     static var previews: some View {
-        
+        let spd = PreviewDummieCode()
         SellablesListView()
             .environmentObject(SellablesListViewModel())
             .environmentObject(ProductDetailViewModel())

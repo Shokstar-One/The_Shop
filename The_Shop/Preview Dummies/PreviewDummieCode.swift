@@ -107,4 +107,70 @@ struct PreviewDummieCode {
         defaultAppearanceId: "2"
     )
     
+    let productPD = Product(sizeIds: ["3",
+                                      "4",
+                                      "5"], images: [
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=3710/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "MODEL"),
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/compositions/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "DESIGN"),
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/2,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=3716/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "MODEL"),
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/3,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "PRODUCT"),
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/4,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "PRODUCT"),
+                                        ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=5060/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg",
+                                                     type: "ALTERNATIVE_MODEL")
+                                        
+                                        
+                                      ], sellableId: "ZbgkEgwNb1TEx7YB0JzD-36-18", ideaId: "61a0db239025455a89e6c1e2", mainDesignId: "300079111", productTypeId: "36", price: ProductPrice(amount: 34.9, currencyId: "1"), name: "One word - Drachen T-Shirt", description: "Das ist der TEST für eine DESCRIPTION!!!!!", tags: [
+                                        "one word",
+                                        "geschenkidee",
+                                        "grün",
+                                        "künstlerisch",
+                                        "Shokstar",
+                                        "Geburtstagsgeschenk",
+                                        "handgemalt",
+                                        "GEILdesignt",
+                                        "drachenkopf",
+                                        "rot",
+                                        "Comicstyle",
+                                        "Dragon head",
+                                        "drachen",
+                                        "and you are"
+                                      ], previewImage: ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=500,height=500,appearanceId=70,backgroundColor=22262d,crop=list,modelId=3710/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg",
+                                                                    type: "MODEL"), appearanceIds: [
+                                                                        "70",
+                                                                        "26"
+                                                                    ], defaultAppearanceId: "70")
+    
+    var productViewModel = ProductViewModel(product: Product(sizeIds: ["3",
+                                                                       "4",
+                                                                       "5"], images: [
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=3710/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "MODEL"),
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/compositions/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "DESIGN"),
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/2,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=3716/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "MODEL"),
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/3,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "PRODUCT"),
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/4,width=650,height=650,appearanceId=70,backgroundColor=22262d/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg", type: "PRODUCT"),
+                                                                         ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=650,height=650,appearanceId=70,backgroundColor=22262d,crop=detail,modelId=5060/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg",
+                                                                                      type: "ALTERNATIVE_MODEL")
+                                                                         
+                                                                         
+                                                                       ], sellableId: "ZbgkEgwNb1TEx7YB0JzD-36-18", ideaId: "61a0db239025455a89e6c1e2", mainDesignId: "300079111", productTypeId: "36", price: ProductPrice(amount: 34.9, currencyId: "1"), name: "One word - Drachen T-Shirt", description: "Das ist der TEST für eine DESCRIPTION!!!!!", tags: [
+                                                                         "one word",
+                                                                         "geschenkidee",
+                                                                         "grün",
+                                                                         "künstlerisch",
+                                                                         "Shokstar",
+                                                                         "Geburtstagsgeschenk",
+                                                                         "handgemalt",
+                                                                         "GEILdesignt",
+                                                                         "drachenkopf",
+                                                                         "rot",
+                                                                         "Comicstyle",
+                                                                         "Dragon head",
+                                                                         "drachen",
+                                                                         "and you are"
+                                                                       ], previewImage: ProductImage(url: "https://image.spreadshirtmedia.net/image-server/v1/products/T36A70PA4643PT17X42Y1D300079111W25835H39985/views/1,width=500,height=500,appearanceId=70,backgroundColor=22262d,crop=list,modelId=3710/ein-drachen-premium-t-shirt-design-fuer-maenner-und-frauen-mit-der-botschaftone-word-and-you-are-springt-der-drache-einen-foermlich-angemacht-vo.jpg",
+                                                                                                     type: "MODEL"), appearanceIds: [
+                                                                                                         "70",
+                                                                                                         "26"
+                                                                                                     ], defaultAppearanceId: "70"))
+    
 }

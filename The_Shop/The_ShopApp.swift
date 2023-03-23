@@ -9,9 +9,13 @@ import SwiftUI
 
 @main 
 struct The_ShopApp: App {
+
     var body: some Scene {
+      
         WindowGroup {
-            ContentView()
+            
+            OnBoardingView()
+            
         }
     }
 }

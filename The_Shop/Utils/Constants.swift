@@ -30,7 +30,7 @@ struct Constants {
     static var PRODUCT_DETAIL_URL: String {
      
      
-        return "\(BASE_URL)/\(SHOP_ID)/sellables/"
+        return "\(BASE_URL)\(SHOP_ID)/sellables/"
     }
    // "https://api.spreadshirt.net/api/v1/shops/100247767/sellables/N02abp1xnxSjx7Jywby7-812-7?appearanceId=1&ideaId=62a46a3628f4aa0fbe2b00de&apikey=?SprdAuth%20apiKey=%22b1271341-2d14-468b-a6ed-d28ba13034c0%22"
     static func randomPage() -> String {

@@ -32,8 +32,9 @@ struct SellableDetailView: View {
                 .padding()
             
             Spacer()
+            
         }
-        .navigationBarTitle(sellableVM.name)
+    
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 
 struct Product: Decodable {
     let sizeIds: [String] // Eine Liste von Größen-IDs für das Produkt
-    let images: [ProductImage] // Eine Liste von Produktbildern für das Produkt
+    var images: [ProductImage] // Eine Liste von Produktbildern für das Produkt
     let sellableId: String // Die Verkaufsbare-ID für das Produkt
     let ideaId: String // Die Idee-ID für das Produkt
     let mainDesignId: String // Die Hauptdesign-ID für das Produkt

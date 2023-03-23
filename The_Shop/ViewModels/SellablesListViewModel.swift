@@ -12,10 +12,24 @@ import SwiftUI
 class SellablesListViewModel: ObservableObject {
     
     @Published var theSellablesListFromVM = [SellableViewModel]()
-    @Published var selectedSellable: SellableViewModel?
+    
+    // MARK: ist nicht nötig, da das sellable direkt an die ProductDetailView übergeben wird
+//    @Published var selectedSellable: SellableViewModel?
+
     @Published var error: IdentifiableError?
     
     
+//    // Setzt das ausgewählte Produkt auf Basis eines Product-Objekts.
+//    func setSellable(_ sellable: Sellable) {
+//        selectedSellable = SellableViewModel(sellable: sellable)
+//    }
+    
+//    init(theSellablesListFromVM: [SellableViewModel] = [SellableViewModel](), selectedSellable: SellableViewModel? = nil, error: IdentifiableError? = nil) {
+//        self.theSellablesListFromVM = theSellablesListFromVM
+//        self.selectedSellable = selectedSellable
+//        self.error = error
+//    }
+ 
     
     func fetchSellables() {
         guard let url = URL(string: Constants.API_URL) else {
@@ -30,6 +44,8 @@ class SellablesListViewModel: ObservableObject {
                 }
                 return
             }
+            
+            print("fetchSellables: \(url)")
             
             guard let data = data else {
                 DispatchQueue.main.async {
