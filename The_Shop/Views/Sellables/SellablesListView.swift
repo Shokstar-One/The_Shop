@@ -41,11 +41,11 @@ struct SellablesListView: View {
                             isAnimated = true
                         }
                     // Liste aller verkaufbaren Produkte --- SellableDetailView(sellableVM: sellableVM))
-                    List(sellableVM.theSellablesListFromVM, id: \.id) { sellableVM in
-                        NavigationLink(destination: ProductDetailView(productVM: _productVM, sellableVM: SellablesListViewModel()).environmentObject(productVM)) {
-                            SellableRowView(sellableVM: sellableVM)
+                    List(sellableVM.theSellablesListFromVM, id: \.id) { sellableVMListItem in
+                        NavigationLink(destination: ProductDetailView(productVM: _productVM, sellableVM: sellableVMListItem)) {
+                            SellableRowView(sellableVM: sellableVMListItem)
                                 .onTapGesture {
-                                    productVM.selectedSellable = sellableVM.sellable
+                                    productVM.selectedSellable = sellableVMListItem.sellable
                                        }
                         } // NavigationLink
                         

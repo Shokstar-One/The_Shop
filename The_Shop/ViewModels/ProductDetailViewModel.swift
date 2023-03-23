@@ -44,11 +44,11 @@ class ProductDetailViewModel: ObservableObject {
     
     //TO DO: sellableId, productAppearanceIds, productIdeaId
     func fetchProduct(sellableId: String, productAppearanceIds: String, productIdeaId: String ) {
-        guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId))&apikey=\(Constants.API_KEY)") else {
+        guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId)&apikey=\(Constants.API_KEY)") else {
             self.error = IdentifiableError(message: "Ungültige URL.")
             return
         }
-        print(url)
+        print("DIE URL AUS DEM FETCHPRODUCT: \(url)")
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
