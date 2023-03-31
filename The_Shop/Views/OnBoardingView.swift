@@ -57,7 +57,7 @@ struct OnBoardingView: View {
                                 .position(x:200, y:600 )
                                 .overlay{
                                     Image("iv_front_txt")
-                                        .offset(y: 90)
+                                        .position(x: 210, y: 470)
                                         .scaleEffect(1.3)
                                 }
                         }
@@ -87,13 +87,16 @@ struct OnBoardingView: View {
                 } // VStack
                 
             } // ZStack
-            
+           
             // Ignoriert die sichere Bereich des Geräts
             .ignoresSafeArea()
             
             // Hintergrundfarbe des Onboarding-Views
             .background(Color.black)
+            
+   
         }
+
     }
     
 }

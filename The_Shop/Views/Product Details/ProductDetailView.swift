@@ -27,7 +27,7 @@ struct ProductDetailView: View {
         
         
       VStack {
-          
+          HeaderLogoView()
             
           Text(productVM.selectedProduct?.productName ?? "Name")
               .font(.system(size: 30, weight: .heavy))
@@ -40,7 +40,7 @@ struct ProductDetailView: View {
                  
           VStack {
               ScrollView(.horizontal, showsIndicators: true) {
-                            HStack(spacing: 24) {
+                            HStack(spacing: 16) {
                                 ForEach(filteredImages
                                         , id: \.self) { productImage in
                                     Image(systemName: "photo")
@@ -50,20 +50,17 @@ struct ProductDetailView: View {
                                         .frame(width: 400, height: 400, alignment: .center)
                                         .cornerRadius(25)
                                         .modifier(ImageModifier(contentSize: CGSize(width: 400.0, height:0.0)))
-                                        
                                     
                                 }
                             }
                         }
-           
               .padding(.horizontal)
-           
               
               // Zeige andere Produktinformationen an
  
         Text(productVM.selectedProduct?.productDescription ?? "Beschreibung")
         Text("\(productVM.selectedProduct?.productFormattedPrice ?? "") ")
-  
+   
           }
        
                    

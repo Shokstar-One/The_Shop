@@ -37,21 +37,24 @@ class ProductDetailViewModel: ObservableObject {
     
     // Ruft die Produktdaten ab.
     func fetchProduct(sellableId: String, productAppearanceIds: String, productIdeaId: String ) {
+        // Überprüfen, ob die URL gültig ist
         guard let url = URL(string: "\(Constants.PRODUCT_DETAIL_URL)\(sellableId)?appearanceId=\(productAppearanceIds)&ideaId=\(productIdeaId)&apikey=\(Constants.API_KEY)") else {
             self.error = IdentifiableError(message: "Ungültige URL.")
             return
         }
         
+        // Datenabfrage an den Server senden
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
+                // Fehler bei der Verbindung mit dem Server
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "\(error)")
                 }
                 return
             }
-            print("Aus fetchProduct: \(url)")
+            print("URL aus fetchProduct: \(url)")
             
-            
+            // Überprüfen, ob die Serverantwort gültig ist
             guard let httpResponse = response as? HTTPURLResponse else {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "Ungültige Serverantwort.")
@@ -66,6 +69,7 @@ class ProductDetailViewModel: ObservableObject {
                 return
             }
             
+            // Überprüfen, ob Daten empfangen wurden
             guard let data = data else {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "Keine Daten empfangen.")
@@ -75,6 +79,7 @@ class ProductDetailViewModel: ObservableObject {
             
             print("DATA BOY: \(data)")
             
+            // Daten in ein Produktobjekt umwandeln
             do {
                 let productResponse = try JSONDecoder().decode(Product.self, from: data)
                 let productViewModel = ProductViewModel(product: productResponse)
@@ -83,15 +88,17 @@ class ProductDetailViewModel: ObservableObject {
                 }
                 print("SelectedProduct: \(String(describing: self.selectedProduct))")
             } catch {
+                // Fehler beim Parsen der Daten
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "\(error)")
                 }
                 return
             }
         }
-        
+        // Datenabfrage starten
         task.resume()
     }
+    
     
 }
 
