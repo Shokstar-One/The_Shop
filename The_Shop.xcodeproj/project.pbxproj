@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		34043C1A29C35DBD00A3B8CA /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */; };
 		3432E57029BB3222003F3A01 /* SellableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E56F29BB3222003F3A01 /* SellableRowView.swift */; };
-		3432E57229BB324A003F3A01 /* SellableDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E57129BB324A003F3A01 /* SellableDetailView.swift */; };
 		3432E57529BB32AF003F3A01 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E57429BB32AF003F3A01 /* Image.swift */; };
 		3432E57729BB3506003F3A01 /* IdentifiableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E57629BB3506003F3A01 /* IdentifiableError.swift */; };
 		3432E57A29BF3CE7003F3A01 /* PreviewDummieCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E57929BF3CE7003F3A01 /* PreviewDummieCode.swift */; };
@@ -63,7 +62,6 @@
 /* Begin PBXFileReference section */
 		34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		3432E56F29BB3222003F3A01 /* SellableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellableRowView.swift; sourceTree = "<group>"; };
-		3432E57129BB324A003F3A01 /* SellableDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellableDetailView.swift; sourceTree = "<group>"; };
 		3432E57429BB32AF003F3A01 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		3432E57629BB3506003F3A01 /* IdentifiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableError.swift; sourceTree = "<group>"; };
 		3432E57929BF3CE7003F3A01 /* PreviewDummieCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDummieCode.swift; sourceTree = "<group>"; };
@@ -130,7 +128,8 @@
 		34043C1729C35D5F00A3B8CA /* Sellables */ = {
 			isa = PBXGroup;
 			children = (
-				3432E57129BB324A003F3A01 /* SellableDetailView.swift */,
+				3477504529B48E8E005D1105 /* SellablesListView.swift */,
+				3432E56F29BB3222003F3A01 /* SellableRowView.swift */,
 			);
 			path = Sellables;
 			sourceTree = "<group>";
@@ -138,6 +137,7 @@
 		34043C1829C35D9C00A3B8CA /* Product Details */ = {
 			isa = PBXGroup;
 			children = (
+				34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */,
 			);
 			path = "Product Details";
 			sourceTree = "<group>";
@@ -206,11 +206,10 @@
 		3477500429B4802B005D1105 /* The_Shop */ = {
 			isa = PBXGroup;
 			children = (
+				3477504729B49A2B005D1105 /* The-Shop-Info.plist */,
 				3477503229B48061005D1105 /* Views */,
 				3477503029B48044005D1105 /* Utils */,
 				3432E57829BF3CCC003F3A01 /* Preview Dummies */,
-				3477504729B49A2B005D1105 /* The-Shop-Info.plist */,
-				3477503829B480B0005D1105 /* Screens */,
 				3477503729B480A6005D1105 /* Extensions */,
 				3477503629B4809B005D1105 /* Controls */,
 				3477503529B48088005D1105 /* Loader */,
@@ -273,6 +272,7 @@
 		3477503229B48061005D1105 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				34AE9B8329D2E652002FB7BE /* OnBoardingView.swift */,
 				34E8AF8429D44FCF000D6357 /* View Hierachie */,
 				34043C1829C35D9C00A3B8CA /* Product Details */,
 				34043C1729C35D5F00A3B8CA /* Sellables */,
@@ -323,20 +323,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3477503829B480B0005D1105 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		34E8AF8429D44FCF000D6357 /* View Hierachie */ = {
 			isa = PBXGroup;
 			children = (
-				34AE9B8329D2E652002FB7BE /* OnBoardingView.swift */,
-				3477504529B48E8E005D1105 /* SellablesListView.swift */,
-				3432E56F29BB3222003F3A01 /* SellableRowView.swift */,
-				34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */,
 			);
 			path = "View Hierachie";
 			sourceTree = "<group>";
@@ -482,7 +471,6 @@
 				34D2258029D31C0F001C0ABA /* Color.swift in Sources */,
 				3477503A29B486DD005D1105 /* SellableResponse.swift in Sources */,
 				3432E58229C0997E003F3A01 /* ImageLoader.swift in Sources */,
-				3432E57229BB324A003F3A01 /* SellableDetailView.swift in Sources */,
 				3432E57529BB32AF003F3A01 /* Image.swift in Sources */,
 				3432E58E29C0B3E0003F3A01 /* ProductPrice.swift in Sources */,
 				3432E59129C0B4B5003F3A01 /* ProductResponse.swift in Sources */,

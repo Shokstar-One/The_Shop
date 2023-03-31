@@ -41,7 +41,7 @@ class ProductDetailViewModel: ObservableObject {
             self.error = IdentifiableError(message: "Ungültige URL.")
             return
         }
-
+        
         let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -65,7 +65,7 @@ class ProductDetailViewModel: ObservableObject {
                 }
                 return
             }
-
+            
             guard let data = data else {
                 DispatchQueue.main.async {
                     self.error = IdentifiableError(message: "Keine Daten empfangen.")
@@ -92,16 +92,12 @@ class ProductDetailViewModel: ObservableObject {
         
         task.resume()
     }
-
-    }
-
-
-
-
+    
+}
 
 // Das ViewModel für ein einzelnes Produkt.
 struct ProductViewModel: Identifiable, Decodable{
-   
+    
     var id = UUID()
     
     // Das zugrunde liegende Product-Objekt.
@@ -161,17 +157,17 @@ struct ProductViewModel: Identifiable, Decodable{
     var productIdeaId: String {
         product.ideaId
     }
-
+    
     // Diese Variable gibt die mainDesignId des Produkts zurück
     var productMainDesignID: String {
         product.mainDesignId
     }
-
+    
     // Diese Variable gibt ein Array mit den tags des Produkts zurück
     var tags: [String] {
         product.tags
     }
-
+    
     // Diese Variable gibt die sellableId des Produkts zurück
     var productSellableId: String {
         product.sellableId
@@ -187,10 +183,9 @@ class ProductImageViewModel: Identifiable, Hashable, Equatable {
         return lhs.id == rhs.id && lhs.imageURL == rhs.imageURL && lhs.imageType == rhs.imageType
     }
     
-    
-    
+    // Die eindeutige ID des Bilds.
     var id = UUID()
-
+    
     // Die URL des Produktbilds.
     var imageURL: String
     
@@ -203,6 +198,7 @@ class ProductImageViewModel: Identifiable, Hashable, Equatable {
         self.imageType = imageType
     }
     
+    // Funktion zum Hashing von Bildern.
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -210,22 +206,23 @@ class ProductImageViewModel: Identifiable, Hashable, Equatable {
 
 extension ProductViewModel: RandomAccessCollection {
     
+    // Definieren des Index-Typs.
     typealias Index = Int
-       
-       var startIndex: Index {
-           return productImages.startIndex
-       }
-       
-       var endIndex: Index {
-           return productImages.endIndex
-       }
-       
+    
+    // Start-Index der Bildliste.
+    var startIndex: Index {
+        return productImages.startIndex
+    }
+    
+    // End-Index der Bildliste.
+    var endIndex: Index {
+        return productImages.endIndex
+    }
+    
+    // Subscript-Funktion zum Abrufen von Bildern anhand ihres Index.
     subscript(position: Index) -> ProductImageViewModel {
         return productImages[position]
     }
-    
-    
-  
 }
 
 

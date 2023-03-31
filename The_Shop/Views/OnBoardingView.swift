@@ -12,13 +12,7 @@ struct OnBoardingView: View {
     
     // Zustandsvariable zum Anzeigen der Parent View
     @State var isShowingParentView : Bool = false
-    
-//    @State var prodTest: ProductViewModel
-//
-//    init(product: ProductViewModel) {
-//        self._prodTest = State(initialValue: product)
-//    }
-//    
+       
     var body: some View {
         NavigationStack{
             ZStack{
