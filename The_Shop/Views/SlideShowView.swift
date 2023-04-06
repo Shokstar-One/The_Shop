@@ -20,32 +20,38 @@ struct SlideShowView: View {
                 .asyncData(imageUrl: "\(myImageURL)" )
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 300, height: 300)
-            .cornerRadius(25)
-
-            Image(systemName: "photo")
-                .asyncData(imageUrl: "\(String(describing: productVM.selectedProduct?.productImages))" )
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 300, height: 300)
                 .cornerRadius(25)
-                .onAppear{
-                    
-                    var imageString: () =  productVM.fetchProduct(sellableId: selectedSellable.sellableId , productAppearanceIds: selectedSellable.defaultAppearanceId , productIdeaId: selectedSellable.ideaId )
-                    
-                    
-                    print("IMMMAGGGGEEEE SLLLLIIIIIDDDEEEEEEE: \(imageString)")
-                }
-            
-        }
+                
+              
+
+                
+           
+//            Image(systemName: "photo")
+//                .asyncData(imageUrl: "\(String(describing: productVM.selectedProduct?.productImages))" )
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 300, height: 300)
+//                .cornerRadius(25)
+//            
+//                .onAppear{
+//                    
+//                    var imageString: () =  productVM.fetchProduct(sellableId: selectedSellable.sellableId , productAppearanceIds: selectedSellable.defaultAppearanceId , productIdeaId: selectedSellable.ideaId )
+//                    
+//                    
+//                    print("IMMMAGGGGEEEE SLLLLIIIIIDDDEEEEEEE: \(imageString)")
+//                }
+           
+        } // VStack
         
-     
+        
         
     }
+    
     
 }
 
 struct SlideShowView_Previews: PreviewProvider {
     static var previews: some View {
-let spd = PreviewDummieCode()
+        let spd = PreviewDummieCode()
         SlideShowView(selectedSellable: spd.sellablePD)
             .environmentObject(ProductDetailViewModel())
     }

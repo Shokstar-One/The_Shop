@@ -17,8 +17,8 @@ struct SellableRowView: View {
         VStack {
             
 
-            Text(sellableVM.name)
-                .font(.title3)
+//            Text(sellableVM.name)
+//                .font(.title3)
             
             Image(systemName: "photo")
                 .asyncData(imageUrl: sellableVM.previewImageURL)
@@ -37,11 +37,10 @@ struct SellableRowView: View {
                         .font(.title2)
                 }
         } // VStack
-      
-
-        .onAppear{
-            print("SellableRow: \(sellableVM.sellableId)")
-        }
+   
+//        .onAppear{
+//            print("SellableRow: \(sellableVM.sellableId)")
+//        }
       
     }
     
