@@ -13,7 +13,7 @@ import UIKit
 struct ImageModifier: ViewModifier {
     private var contentSize: CGSize
     private var min: CGFloat = 1.0
-    private var max: CGFloat = 1.75
+    private var max: CGFloat = 1.9
     @State var currentScale: CGFloat = 1.0
 
     init(contentSize: CGSize) {

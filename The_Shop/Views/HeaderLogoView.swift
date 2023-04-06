@@ -13,6 +13,8 @@ struct HeaderLogoView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
+//            Circle()
+//                .foregroundColor(Color.bordeauxRed)
             // Hintergrundrechteck mit Schatten
             //            Rectangle()
             //                .fill(Color.black)

@@ -24,11 +24,31 @@ class ProductDetailViewModel: ObservableObject {
     
     @Published var productImage: UIImage?
     
+    private var appearanceColors: [[Color]] = []
+    
+    @Published var appearanceIds: [Int] = []
+    
     // Das aktuell ausgewählte Produkt.
     @Published var selectedProduct: ProductViewModel?
     
     // Eine Fehlermeldung, die angezeigt wird, wenn beim Abrufen der Daten ein Fehler aufgetreten ist.
     @Published var error: IdentifiableError?
+    
+    @Published var productAppearanceId: Int
+       
+       // Initialisierung mit einer default appearance ID
+       init(productAppearanceId: Int = 1) {
+           self.productAppearanceId = productAppearanceId
+       }
+       
+    
+       func updateProductAppearanceId(_ newProductAppearanceId: Int) {
+           // Hier die Funktion zum Aktualisieren der View auslösen
+           self.productAppearanceId = newProductAppearanceId
+           
+           // aktualisiert über FetchProduct die View mit den neuen Werten aus newProductAppearanceId
+           fetchProduct(sellableId: selectedProduct?.productSellableId ?? "", productAppearanceIds: String(newProductAppearanceId), productIdeaId: selectedProduct?.productIdeaId ?? "")
+       }
     
     // Setzt das ausgewählte Produkt auf Basis eines Product-Objekts.
     func setProduct(_ product: Product) {
@@ -100,12 +120,69 @@ class ProductDetailViewModel: ObservableObject {
     }
     
     
+    
+    
+    
+    
+    // Gibt die verfügbaren Farben zurück
+    func getColorForProductAppearanceId(_ productAppearanceId: Int) -> Color? {
+        switch productAppearanceId {
+            case 1: return .shirtWhite
+            case 2: return .shirtBlack
+            case 3: return .sky
+            
+            case 22: return .bordeaux
+            case 29: return .shirtOrange
+            case 30: return .neonGreen
+            case 39: return .sunYellow
+            case 77: return .nature
+            case 92: return .kellyGreen
+            
+            case 195: return .aqua
+            case 206: return .peacockBlue
+            case 231, 251: return .grayMeliert
+        
+            
+            case 317: return .kingBlue
+            case 328: return .blueGray
+            case 320, 348, 4: return .navy
+            case 339: return .asphalt
+            case 346: return .crystalPink
+            case 366, 483, 196: return .shirtRed
+            case 387: return .nobleBrown
+            case 388: return .divaBlue
+            
+            
+            case 436: return .lightPink
+            
+            case 506, 447: return .shirtPurple
+            case 566: return .bordeauxRed
+            case 591: return .pink
+            
+            case 645: return .blueMeliert
+            case 646: return .mintGreen
+            case 647: return .jeansBlue
+            case 648: return .anthrazit
+            
+            case 719: return .khaki
+            
+            case 803: return .malve
+
+        default: return .missing
+        }
+    }
+    
+    
 }
+
+
 
 // Das ViewModel für ein einzelnes Produkt.
 struct ProductViewModel: Identifiable, Decodable{
     
     var id = UUID()
+    
+    
     
     // Das zugrunde liegende Product-Objekt.
     var product: Product

@@ -19,6 +19,7 @@
 		3432E58E29C0B3E0003F3A01 /* ProductPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E58D29C0B3E0003F3A01 /* ProductPrice.swift */; };
 		3432E59129C0B4B5003F3A01 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E59029C0B4B5003F3A01 /* ProductResponse.swift */; };
 		3432E59329C0B4E8003F3A01 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E59229C0B4E8003F3A01 /* ProductDetailViewModel.swift */; };
+		344A260429DC6EE600FA3104 /* AppearanceColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A260329DC6EE600FA3104 /* AppearanceColorsView.swift */; };
 		3477500629B4802B005D1105 /* The_ShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3477500529B4802B005D1105 /* The_ShopApp.swift */; };
 		3477500A29B4802B005D1105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3477500929B4802B005D1105 /* Assets.xcassets */; };
 		3477500E29B4802B005D1105 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3477500D29B4802B005D1105 /* Preview Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		3432E58D29C0B3E0003F3A01 /* ProductPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPrice.swift; sourceTree = "<group>"; };
 		3432E59029C0B4B5003F3A01 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
 		3432E59229C0B4E8003F3A01 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		344A260329DC6EE600FA3104 /* AppearanceColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceColorsView.swift; sourceTree = "<group>"; };
 		3477500229B4802B005D1105 /* The_Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = The_Shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3477500529B4802B005D1105 /* The_ShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_ShopApp.swift; sourceTree = "<group>"; };
 		3477500929B4802B005D1105 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,8 +130,6 @@
 		34043C1729C35D5F00A3B8CA /* Sellables */ = {
 			isa = PBXGroup;
 			children = (
-				3477504529B48E8E005D1105 /* SellablesListView.swift */,
-				3432E56F29BB3222003F3A01 /* SellableRowView.swift */,
 			);
 			path = Sellables;
 			sourceTree = "<group>";
@@ -137,7 +137,6 @@
 		34043C1829C35D9C00A3B8CA /* Product Details */ = {
 			isa = PBXGroup;
 			children = (
-				34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */,
 			);
 			path = "Product Details";
 			sourceTree = "<group>";
@@ -272,7 +271,6 @@
 		3477503229B48061005D1105 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				34AE9B8329D2E652002FB7BE /* OnBoardingView.swift */,
 				34E8AF8429D44FCF000D6357 /* View Hierachie */,
 				34043C1829C35D9C00A3B8CA /* Product Details */,
 				34043C1729C35D5F00A3B8CA /* Sellables */,
@@ -280,6 +278,7 @@
 				3432E58329C09A2A003F3A01 /* AsyncImage.swift */,
 				34B0E59129C4CA54008705AC /* HeaderLogoView.swift */,
 				34E8AF8D29D5D194000D6357 /* SlideShowView.swift */,
+				344A260329DC6EE600FA3104 /* AppearanceColorsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -326,6 +325,10 @@
 		34E8AF8429D44FCF000D6357 /* View Hierachie */ = {
 			isa = PBXGroup;
 			children = (
+				34AE9B8329D2E652002FB7BE /* OnBoardingView.swift */,
+				3477504529B48E8E005D1105 /* SellablesListView.swift */,
+				3432E56F29BB3222003F3A01 /* SellableRowView.swift */,
+				34043C1929C35DBD00A3B8CA /* ProductDetailView.swift */,
 			);
 			path = "View Hierachie";
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				3477504229B487CE005D1105 /* SellablesListViewModel.swift in Sources */,
 				34AE9B8429D2E652002FB7BE /* OnBoardingView.swift in Sources */,
 				3477504029B48789005D1105 /* PrevieImage.swift in Sources */,
+				344A260429DC6EE600FA3104 /* AppearanceColorsView.swift in Sources */,
 				3432E57729BB3506003F3A01 /* IdentifiableError.swift in Sources */,
 				3432E58429C09A2A003F3A01 /* AsyncImage.swift in Sources */,
 				3477503C29B4874F005D1105 /* Sellable.swift in Sources */,
