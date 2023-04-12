@@ -178,6 +178,7 @@
 		3454731429E6CA8600D42492 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				3454730E29E55D9E00D42492 /* ShopAppModel.xcdatamodeld */,
 				3454731929E6CBB900D42492 /* Manager */,
 				3454731629E6CAAB00D42492 /* CD_Viewmodels */,
 				3454731529E6CA9800D42492 /* CD_Models */,
@@ -243,7 +244,6 @@
 				3477503129B4804F005D1105 /* ViewModels */,
 				3477503329B48069005D1105 /* Models */,
 				3477500529B4802B005D1105 /* The_ShopApp.swift */,
-				3454730E29E55D9E00D42492 /* ShopAppModel.xcdatamodeld */,
 				3477500929B4802B005D1105 /* Assets.xcassets */,
 				3477500B29B4802B005D1105 /* The_Shop.entitlements */,
 				3477500C29B4802B005D1105 /* Preview Content */,
