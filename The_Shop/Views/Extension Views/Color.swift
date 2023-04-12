@@ -12,7 +12,7 @@ extension Color {
     
     static let brightRed = Color(red: 1.0, green: 0.0, blue: 0.0)
     static let ambientGray = Color(red: 43/255, green: 43/255, blue: 43/255)
-    
+    static let gradientGray = Color(red: 0.267, green: 0.267, blue: 0.267) 
     // verfügbare Farben für die Produkte
     static let bordeauxRed = Color(red: 0.573, green: 0.282, blue: 0.337)
     static let blueMeliert = Color(red: 0.482, green: 0.506, blue: 0.6)

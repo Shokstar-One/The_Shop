@@ -20,6 +20,10 @@
 		3432E59129C0B4B5003F3A01 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E59029C0B4B5003F3A01 /* ProductResponse.swift */; };
 		3432E59329C0B4E8003F3A01 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3432E59229C0B4E8003F3A01 /* ProductDetailViewModel.swift */; };
 		344A260429DC6EE600FA3104 /* AppearanceColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A260329DC6EE600FA3104 /* AppearanceColorsView.swift */; };
+		3454731029E55D9E00D42492 /* ShopAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3454730E29E55D9E00D42492 /* ShopAppModel.xcdatamodeld */; };
+		3454731329E6B94E00D42492 /* ProductInCoreDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3454731229E6B94E00D42492 /* ProductInCoreDataVM.swift */; };
+		3454731829E6CAE800D42492 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3454731729E6CAE800D42492 /* CoreDataModel.swift */; };
+		3454731B29E6CBD700D42492 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3454731A29E6CBD700D42492 /* CoreDataManager.swift */; };
 		3477500629B4802B005D1105 /* The_ShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3477500529B4802B005D1105 /* The_ShopApp.swift */; };
 		3477500A29B4802B005D1105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3477500929B4802B005D1105 /* Assets.xcassets */; };
 		3477500E29B4802B005D1105 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3477500D29B4802B005D1105 /* Preview Assets.xcassets */; };
@@ -74,6 +78,10 @@
 		3432E59029C0B4B5003F3A01 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
 		3432E59229C0B4E8003F3A01 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		344A260329DC6EE600FA3104 /* AppearanceColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceColorsView.swift; sourceTree = "<group>"; };
+		3454730F29E55D9E00D42492 /* ShopAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShopAppModel.xcdatamodel; sourceTree = "<group>"; };
+		3454731229E6B94E00D42492 /* ProductInCoreDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInCoreDataVM.swift; sourceTree = "<group>"; };
+		3454731729E6CAE800D42492 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		3454731A29E6CBD700D42492 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3477500229B4802B005D1105 /* The_Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = The_Shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3477500529B4802B005D1105 /* The_ShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_ShopApp.swift; sourceTree = "<group>"; };
 		3477500929B4802B005D1105 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,20 +135,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34043C1729C35D5F00A3B8CA /* Sellables */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sellables;
-			sourceTree = "<group>";
-		};
-		34043C1829C35D9C00A3B8CA /* Product Details */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Product Details";
-			sourceTree = "<group>";
-		};
 		3432E57329BB3292003F3A01 /* Extension Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +175,40 @@
 			path = Sellables;
 			sourceTree = "<group>";
 		};
+		3454731429E6CA8600D42492 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3454731929E6CBB900D42492 /* Manager */,
+				3454731629E6CAAB00D42492 /* CD_Viewmodels */,
+				3454731529E6CA9800D42492 /* CD_Models */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3454731529E6CA9800D42492 /* CD_Models */ = {
+			isa = PBXGroup;
+			children = (
+				3454731729E6CAE800D42492 /* CoreDataModel.swift */,
+			);
+			path = CD_Models;
+			sourceTree = "<group>";
+		};
+		3454731629E6CAAB00D42492 /* CD_Viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				3454731229E6B94E00D42492 /* ProductInCoreDataVM.swift */,
+			);
+			path = CD_Viewmodels;
+			sourceTree = "<group>";
+		};
+		3454731929E6CBB900D42492 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3454731A29E6CBD700D42492 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		34774FF929B4802B005D1105 = {
 			isa = PBXGroup;
 			children = (
@@ -205,17 +233,17 @@
 		3477500429B4802B005D1105 /* The_Shop */ = {
 			isa = PBXGroup;
 			children = (
+				3454731429E6CA8600D42492 /* CoreData */,
 				3477504729B49A2B005D1105 /* The-Shop-Info.plist */,
 				3477503229B48061005D1105 /* Views */,
 				3477503029B48044005D1105 /* Utils */,
 				3432E57829BF3CCC003F3A01 /* Preview Dummies */,
 				3477503729B480A6005D1105 /* Extensions */,
-				3477503629B4809B005D1105 /* Controls */,
 				3477503529B48088005D1105 /* Loader */,
-				3477503429B4807D005D1105 /* Services */,
 				3477503129B4804F005D1105 /* ViewModels */,
 				3477503329B48069005D1105 /* Models */,
 				3477500529B4802B005D1105 /* The_ShopApp.swift */,
+				3454730E29E55D9E00D42492 /* ShopAppModel.xcdatamodeld */,
 				3477500929B4802B005D1105 /* Assets.xcassets */,
 				3477500B29B4802B005D1105 /* The_Shop.entitlements */,
 				3477500C29B4802B005D1105 /* Preview Content */,
@@ -272,8 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				34E8AF8429D44FCF000D6357 /* View Hierachie */,
-				34043C1829C35D9C00A3B8CA /* Product Details */,
-				34043C1729C35D5F00A3B8CA /* Sellables */,
 				3432E57329BB3292003F3A01 /* Extension Views */,
 				3432E58329C09A2A003F3A01 /* AsyncImage.swift */,
 				34B0E59129C4CA54008705AC /* HeaderLogoView.swift */,
@@ -292,26 +318,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3477503429B4807D005D1105 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		3477503529B48088005D1105 /* Loader */ = {
 			isa = PBXGroup;
 			children = (
 				3432E58129C0997E003F3A01 /* ImageLoader.swift */,
 			);
 			path = Loader;
-			sourceTree = "<group>";
-		};
-		3477503629B4809B005D1105 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controls;
 			sourceTree = "<group>";
 		};
 		3477503729B480A6005D1105 /* Extensions */ = {
@@ -479,13 +491,17 @@
 				3432E58E29C0B3E0003F3A01 /* ProductPrice.swift in Sources */,
 				3432E59129C0B4B5003F3A01 /* ProductResponse.swift in Sources */,
 				3432E57029BB3222003F3A01 /* SellableRowView.swift in Sources */,
+				3454731329E6B94E00D42492 /* ProductInCoreDataVM.swift in Sources */,
 				34E8AF8A29D5A5F4000D6357 /* PageControle.swift in Sources */,
 				3477503E29B48774005D1105 /* Price.swift in Sources */,
 				34B0E59229C4CA54008705AC /* HeaderLogoView.swift in Sources */,
 				34E8AF9029D5EF34000D6357 /* ImageModifier.swift in Sources */,
+				3454731B29E6CBD700D42492 /* CoreDataManager.swift in Sources */,
 				3477504629B48E8E005D1105 /* SellablesListView.swift in Sources */,
+				3454731829E6CAE800D42492 /* CoreDataModel.swift in Sources */,
 				34043C1A29C35DBD00A3B8CA /* ProductDetailView.swift in Sources */,
 				3432E59329C0B4E8003F3A01 /* ProductDetailViewModel.swift in Sources */,
+				3454731029E55D9E00D42492 /* ShopAppModel.xcdatamodeld in Sources */,
 				3477500629B4802B005D1105 /* The_ShopApp.swift in Sources */,
 				34E8AF8E29D5D194000D6357 /* SlideShowView.swift in Sources */,
 				3477504429B48891005D1105 /* Constants.swift in Sources */,
@@ -849,6 +865,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3454730E29E55D9E00D42492 /* ShopAppModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3454730F29E55D9E00D42492 /* ShopAppModel.xcdatamodel */,
+			);
+			currentVersion = 3454730F29E55D9E00D42492 /* ShopAppModel.xcdatamodel */;
+			path = ShopAppModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 34774FFA29B4802B005D1105 /* Project object */;
 }

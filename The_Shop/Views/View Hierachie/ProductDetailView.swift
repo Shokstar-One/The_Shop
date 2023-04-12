@@ -42,7 +42,7 @@ struct ProductDetailView: View {
                 let filteredImages = productVM.selectedProduct?.productImages.filter { ["DESIGN", "MODEL"].contains($0.imageType) } ?? []
                 
                 VStack{
-                    Spacer(minLength: 50)
+                    //Spacer(minLength: 50)
                     VStack {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
@@ -55,6 +55,7 @@ struct ProductDetailView: View {
                                         .frame(width: 340, height: 650 )
                                         .cornerRadius(0)
                                         .modifier(ImageModifier(contentSize: CGSize(width: 400.0, height: 0.0)))
+                                     
                                     
                                     
                                 }
@@ -67,6 +68,8 @@ struct ProductDetailView: View {
                         // Zeige andere Produktinformationen an
                         Spacer()
                         VStack {
+                            
+                            
                             // Falls es ein ausgewähltes Produkt gibt
                             if let product = productVM.selectedProduct {
                                 let appearanceColors = product.productAppearanceIds.compactMap {
@@ -75,10 +78,15 @@ struct ProductDetailView: View {
                                     // Wandle die appearance Id in eine Zahl um und rufe die Farben ab, die zur appearance Id gehören. Falls die Umwandlung fehlschlägt, verwende die Zahl 0 als Standardwert.
                                     productVM.getColorForProductAppearanceId(Int(appearanceId) ?? 0)
                                 }
+                                
                                 // Zeige das View mit den Farben an
-                                AppearanceColorsView(appearanceIds: productVM.selectedProduct?.productAppearanceIds.compactMap{ Int($0)} ?? [1] ,  selectedSellable: selectedSellable)
-                                // Füge das productVM als Environment-Objekt hinzu
-                                    .environmentObject(productVM)
+                                VStack {
+                                    
+                                    AppearanceColorsView(appearanceIds: productVM.selectedProduct?.productAppearanceIds.compactMap{ Int($0)} ?? [1] )
+                                        .environmentObject(productVM)
+                                    
+                                } // VStack
+                                
                             }
                             // Wenn kein Produkt ausgewählt wurde
                             else {
@@ -109,13 +117,9 @@ struct ProductDetailView: View {
                 } // VStack
                 .background(Color.ambientGray)
                 .cornerRadius(40)
-
+                
                 
             } // VStack
-            .onAppear{
-                
-                
-            }
             .task{
                 do {
                     try productVM.fetchProduct(sellableId: selectedSellable.sellableId, productAppearanceIds: selectedSellable.appearanceIds[0], productIdeaId: selectedSellable.ideaId)
@@ -123,10 +127,11 @@ struct ProductDetailView: View {
                     print("Error fetching product: \(error.localizedDescription)")
                     // handle error as needed
                 }
-
+                
                 
             }
         } // ZStack
+    
         
     }
     

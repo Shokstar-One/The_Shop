@@ -19,33 +19,27 @@ struct SellableRowView: View {
 
 //            Text(sellableVM.name)
 //                .font(.title3)
-            
+            HStack {
             Image(systemName: "photo")
                 .asyncData(imageUrl: sellableVM.previewImageURL)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250, height: 250)
                 .cornerRadius(25)
-            
-            Rectangle()
-                .fill(Color.brightRed)
-                .frame(height: 32)
-                .cornerRadius(25)
-                .padding()
-                .overlay{
-                    Text("Details")
-                        .foregroundColor(Color.white)
-                        .font(.title2)
+        
+                // Füge einen Text hinzu.
+                Text("      ")
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 48 )
+                    .padding(.vertical, 16)
+            } // VStack
+            // Setze den Hintergrund mit einer Kapselform und einem Farbverlauf.
+            .background(LinearGradient(colors: [.gradientGray, .clear], startPoint: .topLeading, endPoint: .bottomTrailing), in: Capsule())
+            .shadow(color: .black.opacity(0.6), radius: 10, x:5, y: 20)
+                }
                 }
         } // VStack
    
-//        .onAppear{
-//            print("SellableRow: \(sellableVM.sellableId)")
-//        }
-      
-    }
-    
-    
-}
+
 
 
 struct SellableRowView_Previews: PreviewProvider {
