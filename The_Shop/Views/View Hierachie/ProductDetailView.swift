@@ -14,7 +14,12 @@ struct ProductDetailView: View {
     //    @EnvironmentObject var sellableVM: SellablesListViewModel
     
     @EnvironmentObject var productVM: ProductDetailViewModel
-    // MARK: wird aus der listview übergeben
+    @StateObject private var prouctDetailsCD = ProductProductDetails()
+    
+    @StateObject private var saveProductVM = ProductInCoreDataVM()
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     var selectedSellable: Sellable
     @State private var images = [ProductImageViewModel]()
     @State private var currentPage = 0
@@ -22,6 +27,7 @@ struct ProductDetailView: View {
     @State var productImages: [ProductImageViewModel] = []
     
     @State private var scale: CGFloat = 1.0
+    @State var isSaved: Bool = false
     
     var body: some View {
         
@@ -55,7 +61,7 @@ struct ProductDetailView: View {
                                         .frame(width: 340, height: 650 )
                                         .cornerRadius(0)
                                         .modifier(ImageModifier(contentSize: CGSize(width: 400.0, height: 0.0)))
-                                     
+                                    
                                     
                                     
                                 }
@@ -96,6 +102,21 @@ struct ProductDetailView: View {
                             
                             
                             // Text(productVM.selectedProduct?.productAppearanceIds[0] ?? "Farbe" )
+                            Button("Save") {
+                                saveProductVM.saveProduct(name: selectedSellable.name, price: selectedSellable.price.amount, description: selectedSellable.description, appearanceIds: selectedSellable.appearanceIds[0], defaultAppearanceId: selectedSellable.defaultAppearanceId, ideaID: selectedSellable.ideaId, mainDesignID: selectedSellable.mainDesignId, productTypeID: selectedSellable.productTypeId, sellableID: selectedSellable.sellableId)
+                                
+                                isSaved = true
+                               // presentationMode.wrappedValue.dismiss()
+                                
+                            }
+                           
+                            if isSaved {
+                                //hier muss ich weiter machen. Die Daten müssen aus CoreData abgefragt werden.
+                                Text(prouctDetailsCD.name ?? "Name")
+                                    .foregroundColor(.aqua)
+                                    .bold()
+                                   
+                            }
                             
                             Text(productVM.selectedProduct?.productDescription ?? "Beschreibung")
                                 .foregroundColor(.white)
@@ -131,7 +152,7 @@ struct ProductDetailView: View {
                 
             }
         } // ZStack
-    
+        
         
     }
     

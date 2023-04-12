@@ -25,6 +25,8 @@ class ProductInCoreDataVM: ObservableObject {
         fetchProducts()
     }
     
+    
+    
     // Funktion, um alle Produkte zu erhalten
     func getAllProducts() {
         DispatchQueue.main.async {
